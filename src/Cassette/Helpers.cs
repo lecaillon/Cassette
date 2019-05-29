@@ -10,10 +10,10 @@ namespace Cassette
 {
     internal static class Helpers
     {
-        public static async Task<string> GetCassetteKey(this HttpRequestMessage httpRequest)
+        public static async Task<string> GetCassetteKey(this HttpRequestMessage httpRequest, CassetteOptions options)
         {
             var request = await httpRequest.ToRequest();
-            return Cassette.GetKey(request);
+            return Cassette.GetKey(request, options);
         }
 
         public static async Task<Request> ToRequest(this HttpRequestMessage httpRequest)

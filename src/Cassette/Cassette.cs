@@ -29,12 +29,12 @@ namespace Cassette
 
         public static async Task<Cassette> Record(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse)
         {
-            if (httpRequest == null)
+            if (httpRequest is null)
             {
                 throw new ArgumentNullException(nameof(httpRequest));
             }
 
-            if (httpResponse == null)
+            if (httpResponse is null)
             {
                 throw new ArgumentNullException(nameof(httpResponse));
             }
@@ -74,14 +74,17 @@ namespace Cassette
             return httpResponse;
         }
 
-        public static string GetKey(Request request)
+        public static string GetKey(Request request, CassetteOptions options)
         {
             var bytes = Encoding.UTF8.GetBytes(request.Method + request.Uri + request.Body);
 
             using (var sha1 = new SHA1Managed())
             {
                 var hash = sha1.ComputeHash(bytes);
-                return Convert.ToBase64String(hash);
+                return options.KeyPrefix
+                     + request.Method + options.KeySeparator
+                     + request.Uri.Replace("http://", "http//").Replace("https://", "http//") + options.KeySeparator
+                     + Convert.ToBase64String(hash);
             }
         }
     }
