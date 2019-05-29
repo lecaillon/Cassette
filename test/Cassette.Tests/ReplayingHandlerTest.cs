@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Refit;
 using Xunit;
 
@@ -17,9 +18,10 @@ namespace Cassette.Tests
         {
             var serviceProvider = new ServiceCollection()
                 .AddDistributedMemoryCache()
+                .AddOptions()
                 .BuildServiceProvider();
 
-            var handler = new ReplayingHandler(serviceProvider.GetService<IDistributedCache>())
+            var handler = new ReplayingHandler(serviceProvider.GetService<IDistributedCache>(), serviceProvider.GetService<IOptions<CassetteOptions>>())
             {
                 InnerHandler = new HttpClientHandler()
             };
