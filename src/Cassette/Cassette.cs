@@ -81,7 +81,7 @@ namespace Cassette
             using (var sha1 = new SHA1Managed())
             {
                 var hash = sha1.ComputeHash(bytes);
-                return options.KeyPrefix
+                return options.KeyPrefix is null ? "" : options.KeyPrefix + options.KeySeparator
                      + request.Method + options.KeySeparator
                      + request.Uri.Replace("http://", "http//").Replace("https://", "http//") + options.KeySeparator
                      + Convert.ToBase64String(hash);
