@@ -19,8 +19,11 @@ namespace Cassette.Tests
         {
             var serviceProvider = new ServiceCollection()
                 .AddDistributedMemoryCache()
-                .AddOptions()
-                .AddLogging()
+                .AddCassette(options =>
+                {
+                    options.KeyPrefix = "Cassette";
+                    options.CacheEntryOption.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+                })
                 .BuildServiceProvider();
 
             var handler = new ReplayingHandler(
