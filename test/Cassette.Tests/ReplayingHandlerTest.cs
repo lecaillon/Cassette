@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Cassette.Tests.WebApplication;
 using FluentAssertions;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,8 +47,8 @@ namespace Cassette.Tests
         public async Task Should_Same_Requests_Return_Same_Responses()
         {
             // Act
-            var regions = await _geoApi.GetRegionsAsync("32");
-            var regions2 = await _geoApi.GetRegionsAsync("32");
+            var regions = await _geoApi.GetRegions();
+            var regions2 = await _geoApi.GetRegions();
 
             // Assert
             regions.Should().BeEquivalentTo(regions2);
