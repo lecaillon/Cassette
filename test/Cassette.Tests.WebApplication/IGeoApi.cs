@@ -2,15 +2,12 @@
 using System.Threading.Tasks;
 using Refit;
 
-namespace Cassette.Tests
+namespace Cassette.Tests.WebApplication
 {
     public interface IGeoApi
     {
         [Get("/regions")]
-        Task<List<Region>> GetRegionsAsync(string code = null);
-
-        [Post("/regions")]
-        Task CreateRegion(Region region);
+        Task<List<Region>> GetRegions();
     }
 
     public class Region

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Cassette;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -31,5 +32,20 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return services;
         }
+
+        /// <summary>
+        ///     Adds the Cassette message handler to a dedicated <see cref="System.Net.Http.HttpClient"/>.
+        /// </summary>
+        public static IHttpClientBuilder AddReplayingHttpMessageHandler(this IHttpClientBuilder builder)
+        {
+            if (builder.Services.IsCassetteRegistered())
+            {
+                builder.AddHttpMessageHandler<ReplayingHandler>();
+            }
+            return builder;
+        }
+
+        private static bool IsCassetteRegistered(this IServiceCollection services) =>
+            services.Any(x => x.ServiceType == typeof(ReplayingHandler));
     }
 }
