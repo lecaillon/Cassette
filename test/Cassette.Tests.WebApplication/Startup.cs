@@ -23,7 +23,9 @@ namespace Cassette.Tests.WebApplication
 
             services.AddRefitClient<IGeoApi>()
                     .ConfigureHttpClient(options => options.BaseAddress = new Uri("https://geo.api.gouv.fr"))
-                    .AddReplayingHttpMessageHandler();
+                    .AddReplayingHttpMessageHandler(); // Will add the Cassette replaying handler for the IGeoApi 
+                                                       // only if AddCassette() is previously called.
+                                                       // The idea obviously is to activate Cassette only a test env.
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

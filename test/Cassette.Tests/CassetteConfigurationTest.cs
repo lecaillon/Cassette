@@ -27,7 +27,7 @@ namespace Cassette.Tests
             var response = await client.GetAsync("api/geo/regions");
 
             // Assert
-            response.EnsureSuccessStatusCode(); // Status Code 200-299
+            response.EnsureSuccessStatusCode();
         }
     }
 
@@ -37,7 +37,10 @@ namespace Cassette.Tests
         {
             builder.ConfigureServices((builderContext, services) =>
             {
+                // Declare the cache implementation Cassette will rely on
                 services.AddDistributedMemoryCache();
+
+                // Register Cassette in a test env only
                 services.AddCassette(options =>
                 {
                     options.KeyPrefix = "Cassette";

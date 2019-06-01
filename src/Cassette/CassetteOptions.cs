@@ -8,12 +8,12 @@ namespace Cassette
     public class CassetteOptions
     {
         /// <summary>
-        ///     Gets or sets the prefix used in the name of a key.
+        ///     Gets or sets the prefix used in the name of a key in the cache.
         /// </summary>
         public string KeyPrefix { get; set; }
 
         /// <summary>
-        ///     Gets or sets the separator used in the name of a key. 
+        ///     Gets or sets the separator used in the name of a key in the cache.
         ///     The default value of this property is the colon, following the Redis key naming convention.
         /// </summary>
         public string KeySeparator { get; set; } = ":";
