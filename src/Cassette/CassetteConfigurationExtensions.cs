@@ -33,8 +33,10 @@ namespace Microsoft.Extensions.DependencyInjection
             return services;
         }
 
-        /// <summary>
-        ///     Adds the Cassette message handler to a dedicated <see cref="System.Net.Http.HttpClient"/>.
+        /// <summary> 
+        ///     Adds the Cassette message handler to a dedicated <see cref="System.Net.Http.HttpClient"/>, 
+        ///     only if <see cref="AddCassette(IServiceCollection, Action{CassetteOptions})"/> has been previously called. 
+        ///     Otherwise does not do anything.
         /// </summary>
         public static IHttpClientBuilder AddReplayingHttpMessageHandler(this IHttpClientBuilder builder)
         {

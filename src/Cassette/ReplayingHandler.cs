@@ -8,12 +8,22 @@ using Microsoft.Extensions.Options;
 
 namespace Cassette
 {
+    /// <summary>
+    ///     An HTTP Client handler that caches successful responses and reuse them 
+    ///     for speeding up your test suite and improving connectivity resilience.
+    /// </summary>
     public class ReplayingHandler : DelegatingHandler
     {
         private readonly IDistributedCache _cache;
         private readonly CassetteOptions _options;
         private readonly ILogger _logger;
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ReplayingHandler"/>.
+        /// </summary>
+        /// <param name="cache"> The distributed cache used by Cassette to store successful HTTP response messages that went through this handler. </param>
+        /// <param name="options"> The options class for configuring Cassette. </param>
+        /// <param name="logger"> A dedicated logger. </param>
         public ReplayingHandler(IDistributedCache cache, IOptions<CassetteOptions> options, ILogger<ReplayingHandler> logger)
         {
             _cache = cache ?? throw new ArgumentNullException(nameof(cache));
