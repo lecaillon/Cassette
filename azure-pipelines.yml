@@ -1,0 +1,25 @@
+pool:
+  name: Hosted Ubuntu 1604
+steps:
+- script: './build.sh --target=clean'
+  displayName: Clean
+
+- script: './build.sh --target=build'
+  displayName: Build
+
+- script: './build.sh --target=test'
+  displayName: Test
+
+- task: PublishTestResults@2
+  displayName: 'Publish test results'
+  inputs:
+    testResultsFormat: VSTest
+    testResultsFiles: '*.trx'
+    searchFolder: '$(build.sourcesdirectory)/publish'
+    failTaskOnFailedTests: true
+
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish artifacts'
+  inputs:
+    artifactName: dist
+    targetPath: dist
