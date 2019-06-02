@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Cassette.Http</id>
+    <authors>Philippe Lécaillon</authors>
+    <owners>Philippe Lécaillon</owners>
+    <summary>Cassette records and replays successful HTTP responses in a testing environment.</summary>
+    <description>An HTTP Client handler that caches successful responses and reuse them for speeding up your test suite and improving connectivity resilience.</description>
+    <copyright>Copyright © P.Lécaillon 2019</copyright>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/lecaillon/Cassette</projectUrl>
+    <repository type="git" url="https://github.com/lecaillon/Cassette.git" />
+    <iconUrl>https://raw.githubusercontent.com/lecaillon/Cassette/master/images/logo128.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <releaseNotes></releaseNotes>
+    <tags></tags>
+    <dependencies>
+      <group targetFramework="netstandard2.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\netstandard2.0\Cassette.dll" target="lib\netstandard2.0" />
+    <file src="bin\Release\netstandard2.0\Cassette.pdb" target="lib\netstandard2.0" />
+  </files>
+</package>
