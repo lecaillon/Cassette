@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cassette.Tests.WebApplication.Controllers
+namespace AspNetCore.HttpClientFactory.QuickStart.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

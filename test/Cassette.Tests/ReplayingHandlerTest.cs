@@ -1,7 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Cassette.Tests.WebApplication;
+using AspNetCore.HttpClientFactory.QuickStart;
 using FluentAssertions;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.DependencyInjection;

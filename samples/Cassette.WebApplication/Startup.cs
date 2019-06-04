@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 
-namespace Cassette.Tests.WebApplication
+namespace Cassette.WebApplication
 {
     public class Startup
     {

@@ -88,6 +88,12 @@ namespace Cassette
             return null;
         }
 
+        public static string GetUriWithoutLastSegment(this Request request)
+        {
+            var uri = new Uri(request.Uri);
+            return $"{uri.Scheme}://{uri.Host}{string.Join("", uri.Segments.Take(uri.Segments.Length - 1))}";
+        }
+
         private static Cassette ToCassette(this byte[] bytes)
         {
             using (var stream = new MemoryStream(bytes))

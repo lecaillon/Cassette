@@ -76,14 +76,22 @@ namespace Cassette
 
         public static string GetKey(Request request, CassetteOptions options)
         {
-            var bytes = Encoding.UTF8.GetBytes(request.Method + request.Uri + request.Body);
+            if (request.Headers.ContainsKey(CassetteOptions.NoRecord))
+            {
+                return null;
+            }
+
+            string requestMethod = request.Method;
+            string requestUri = request.Headers.ContainsKey(CassetteOptions.ExcludeLastUriSegment) ? request.GetUriWithoutLastSegment() : request.Uri;
+            string requestBody = request.Headers.ContainsKey(CassetteOptions.ExcludeRequestBody) ? string.Empty : request.Body;
+            var bytes = Encoding.UTF8.GetBytes(requestMethod + requestUri + requestBody);
 
             using (var sha1 = new SHA1Managed())
             {
                 var hash = sha1.ComputeHash(bytes);
                 return options.KeyPrefix is null ? "" : options.KeyPrefix + options.KeySeparator
-                     + request.Method + options.KeySeparator
-                     + request.Uri.Replace("http://", "http//").Replace("https://", "http//") + options.KeySeparator
+                     + requestMethod + options.KeySeparator
+                     + requestUri.Replace("http://", "http//").Replace("https://", "http//") + options.KeySeparator
                      + Convert.ToBase64String(hash);
             }
         }

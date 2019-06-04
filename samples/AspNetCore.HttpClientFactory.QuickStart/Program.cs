@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Cassette.Tests.WebApplication
+namespace AspNetCore.HttpClientFactory.QuickStart
 {
     public class Program
     {
