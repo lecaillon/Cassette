@@ -23,9 +23,11 @@ namespace AspNetCore.HttpClientFactory.QuickStart
 
             services.AddRefitClient<IGeoApi>()
                     .ConfigureHttpClient(options => options.BaseAddress = new Uri("https://geo.api.gouv.fr"))
-                    .AddReplayingHttpMessageHandler(); // Will add the Cassette replaying handler for the IGeoApi 
-                                                       // only if AddCassette() is previously called.
-                                                       // The idea obviously is to activate Cassette only a test env.
+                    .AddReplayingHttpMessageHandler(); // Add the replaying message handler for the the IGeoApi,
+                                                       // only if Cassette has been previously registered by calling AddCassette().
+                                                       // The idea is to activate Cassette only during the integration tests.
+
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
