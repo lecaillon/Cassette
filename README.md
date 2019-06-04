@@ -20,3 +20,5 @@ Cassette is available as a single [NuGet package](https://www.nuget.org/packages
 Install-Package Cassette.Http
 ```
 
+### Usage
+
