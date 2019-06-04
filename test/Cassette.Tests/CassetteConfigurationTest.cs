@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Cassette.Tests.WebApplication;
+using AspNetCore.HttpClientFactory.QuickStart;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;

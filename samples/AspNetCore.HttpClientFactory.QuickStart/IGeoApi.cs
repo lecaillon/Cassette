@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Cassette;
 using Refit;
 
-namespace Cassette.Tests.WebApplication
+namespace AspNetCore.HttpClientFactory.QuickStart
 {
     public interface IGeoApi
     {
+        [Headers(CassetteOptions.Refit.NoRecord)]
         [Get("/regions")]
         Task<List<Region>> GetRegions();
     }

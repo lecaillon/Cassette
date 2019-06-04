@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 
-namespace Cassette.Tests.WebApplication
+namespace AspNetCore.HttpClientFactory.QuickStart
 {
     public class Startup
     {
@@ -22,7 +22,7 @@ namespace Cassette.Tests.WebApplication
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddRefitClient<IGeoApi>()
-                    .ConfigureHttpClient(options => options.BaseAddress = new Uri("https://geo.api.gouv.fr"))
+                    .ConfigureHttpClient(options => options.BaseAddress = new Uri("https://geo.gouv.fr"))
                     .AddReplayingHttpMessageHandler(); // Will add the Cassette replaying handler for the IGeoApi 
                                                        // only if AddCassette() is previously called.
                                                        // The idea obviously is to activate Cassette only a test env.
