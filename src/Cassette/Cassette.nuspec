@@ -4,8 +4,8 @@
     <id>Cassette.Http</id>
     <authors>Philippe Lécaillon</authors>
     <owners>Philippe Lécaillon</owners>
-    <summary>Cassette records and replays successful HTTP responses in a testing environment.</summary>
-    <description>An HTTP Client handler that caches successful responses and reuse them for speeding up your test suite and improving connectivity resilience.</description>
+    <summary>Records and replays successful HTTP responses in your testing environment.</summary>
+    <description>An HTTP Client handler that caches successful responses and replays them for improving the stability of your testing environment and speeding up your test suite.</description>
     <copyright>Copyright © P.Lécaillon 2019</copyright>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/lecaillon/Cassette</projectUrl>
@@ -13,7 +13,7 @@
     <iconUrl>https://raw.githubusercontent.com/lecaillon/Cassette/master/images/logo128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes></releaseNotes>
-    <tags></tags>
+    <tags>cassette cassette.http integration-tests continuous-integration httpclient middleware message-handler cache distributed-cache</tags>
     <dependencies>
       <group targetFramework="netstandard2.0" />
     </dependencies>
