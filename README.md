@@ -25,7 +25,7 @@ Most of the time Cassette will have to be configured both in your application as
 
 #### In the application
 The easiest way to configure Cassette is to use the [HttpClientFactory](https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests). It will allow you to add the `ReplayingHandler` to every `HttpClient`. A sample that also uses [Refit](https://github.com/reactiveui/refit) is available [here](https://github.com/lecaillon/Cassette/blob/7b2b95c42624dc0a21b1e6968aa01a106bc35ea2/samples/AspNetCore.HttpClientFactory.QuickStart/Startup.cs#L24).
-> Until the `AddCassette()` has been called the HTTP message handler is not really added to the HttpClient.
+> Until the `AddCassette()` method has been called, the HTTP message handler is not really added to the HttpClient so its behavior remains the same.
 ```c#
 services.AddRefitClient<IGeoApi>()
         .ConfigureHttpClient(options => options.BaseAddress = new Uri("https://geo.api.gouv.fr"))
