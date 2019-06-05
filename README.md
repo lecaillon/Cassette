@@ -19,6 +19,10 @@ Cassette is available as a single [NuGet package](https://www.nuget.org/packages
 Install-Package Cassette.Http
 ```
 
+### Requirement
+- **.NET Core 2+** or **.NET 4.6.1+** since Cassette targets .NET Standard 2.0 
+- A registered implementation of `IDistributedCache` because the `ReplayingHandler` has a dependency on it.
+
 ### Usage
 Most of the time Cassette will have to be configured both in your application as well as in the associated test project.
 
