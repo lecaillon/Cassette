@@ -9,7 +9,7 @@ It is based on a very simple idea: uniquely identify all the requests that pass 
 
 ### Key features
 - Improves the stability of your testing environment.
-- Avoids to many calls to HTTP servers that your application depends on, each time your CI pipeline runs.
+- Avoids to many calls to your HTTP API dependencies, each time your CI pipeline runs.
 - Speeds up the execution of your test suite.
 
 
