@@ -33,4 +33,4 @@ services.AddRefitClient<IGeoApi>()
                                            // The idea is to activate Cassette only during the integration tests.
 ```
 
-#### In the test project
+#### In the integration test project
