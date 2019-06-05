@@ -9,9 +9,8 @@ It is based on a very simple idea: uniquely identify all the requests that pass 
 
 ### Key features
 - Improves the stability of your testing environment.
-- Avoids to many calls to your HTTP API dependencies, each time your CI pipeline runs.
 - Speeds up the execution of your test suite.
-
+- Avoids to many calls to your HTTP API dependencies, each time your CI pipeline runs.
 
 ### Installation
 Cassette is available as a single [NuGet package](https://www.nuget.org/packages/Cassette.Http).
