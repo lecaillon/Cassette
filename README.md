@@ -29,8 +29,8 @@ Install-Package Cassette.Http
 ```c#
 services.AddRefitClient<IGeoApi>()
         .ConfigureHttpClient(options => options.BaseAddress = new Uri("https://geo.api.gouv.fr"))
-        .AddReplayingHttpMessageHandler(); // Add the replaying message handler for the the IGeoApi,
-                                           // only if Cassette has been previously registered by calling AddCassette().
+        .AddReplayingHttpMessageHandler(); // Add the replaying message handler for the the IGeoApi, only
+                                           // if Cassette has been previously registered by calling AddCassette().
                                            // The idea is to activate Cassette only during the integration tests.
 ```
 
