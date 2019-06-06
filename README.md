@@ -36,4 +36,4 @@ services.AddRefitClient<IGeoApi>()
 
 > Until the `AddCassette()` configuration method has been called, the HTTP message handler is not really added to the HttpClient, so its behavior remains unchanged.
 
-2. xxx
+2. Finally activate Cassette in integration tests, by calling the `AddCassette()` configuration method **before** the registration of the message handlers. Either by 
