@@ -24,11 +24,8 @@ Install-Package Cassette.Http
 - Register an implementation of [`IDistributedCache`](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed) (Redis, SQL Server, in-memory).
 
 ### Usage
-Most of the time Cassette will have to be configured both in your application as well as in the associated test project.
-
-#### In the application
 The easiest way to configure Cassette is to use the [HttpClientFactory](https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests). It will allow you to add the `ReplayingHandler` to every `HttpClient`. A sample that also uses [Refit](https://github.com/reactiveui/refit) is available [here](https://github.com/lecaillon/Cassette/blob/master/samples/AspNetCore.HttpClientFactory.QuickStart/Startup.cs).
-> Until the `AddCassette()` configuration method has been called, the HTTP message handler is not really added to the HttpClient, so its behavior remains unchanged.
+
 ```c#
 services.AddRefitClient<IGeoApi>()
         .ConfigureHttpClient(options => options.BaseAddress = new Uri("https://geo.api.gouv.fr"))
@@ -36,5 +33,3 @@ services.AddRefitClient<IGeoApi>()
                                            // only if Cassette has been previously registered by calling AddCassette().
                                            // The idea is to activate Cassette only during the integration tests.
 ```
-
-#### In the integration test project
