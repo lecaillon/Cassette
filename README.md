@@ -21,7 +21,7 @@ Install-Package Cassette.Http
 
 ### Requirement
 - **.NET Core 2+** or **.NET 4.6.1+**
-- Register an implementation (Redis, SQL Server, in-memory) of [`IDistributedCache`](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed).
+- Register an implementation of [`IDistributedCache`](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed) (Redis, SQL Server, in-memory).
 
 ### Usage
 Most of the time Cassette will have to be configured both in your application as well as in the associated test project.
