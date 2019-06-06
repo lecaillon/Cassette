@@ -6,6 +6,7 @@ Records and replays successful HTTP responses in your testing environment.
 
 In a micro-service context, where your integration tests depend on a lot of external HTTP resources, Cassette is an ideal tool to improve the stability of your CI pipeline.
 It is based on a very simple idea: uniquely identify all the requests that pass through and record succesfull reponses. After recording, replay the same responses without actually calling the real REST endpoint.
+
 To create that unique request identifier, Cassette computes an hash from the HTTP method, the uri and the body.
 
 ### Key features
@@ -55,6 +56,6 @@ services.AddCassette(options =>
 Cassette uses specific HTTP request headers to modify its behavior.
 They are define in the classes `CassetteOptions` and `CassetteOptions.Refit`:
 - NoRecord: prevent caching of the HTTP response.
-- ExcludeRequestBody: exclude the request body from the computed key when it contains an auto-generated identifier that would cause cache misses.
-- ExcludeLastUriSegment: exclude the last uri segment from the computed key when the its value is always different between calls and would cause cache misses.
+- ExcludeRequestBody: exclude the request body from the computed key in cache when it contains an auto-generated identifier that would cause cache misses.
+- ExcludeLastUriSegment: exclude the last uri segment from the computed key in cache when its value is always different between calls and would cause cache misses.
 
