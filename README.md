@@ -36,4 +36,16 @@ services.AddRefitClient<IGeoApi>()
 
 > Until the `AddCassette()` configuration method has been called, the HTTP message handler is not really added to the HttpClient, so its behavior remains unchanged.
 
-2. Finally activate Cassette in integration tests, by calling the `AddCassette()` configuration method **before** the registration of the message handlers. Either by 
+2. Finally activate Cassette during integration tests, by calling the `AddCassette()` configuration method **before** the registration of the message handlers. You can either use a feature toggle or even better create an [integration test project](https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests) to override your DI configuration. Another sample can be found [here](https://github.com/lecaillon/Cassette/blob/master/test/Cassette.Tests/CustomWebApplicationFactory.cs).
+
+```c#
+// Declare the cache implementation Cassette will rely on
+services.AddDistributedMemoryCache();
+
+// Register Cassette in the DI container
+services.AddCassette(options =>
+{
+	options.KeyPrefix = "Cassette";
+	options.CacheEntryOption.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+});
+```
