@@ -15,7 +15,13 @@
     <releaseNotes></releaseNotes>
     <tags>cassette cassette.http integration-tests continuous-integration httpclient middleware message-handler cache distributed-cache</tags>
     <dependencies>
-      <group targetFramework="netstandard2.0" />
+      <group targetFramework="netstandard2.0">
+        <dependency id="Microsoft.Extensions.Caching.Abstractions" version="2.2.0" />
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.2.0" />
+        <dependency id="Microsoft.Extensions.Http" version="2.2.0" />
+        <dependency id="Microsoft.Extensions.Logging" version="2.2.0" />
+        <dependency id="Microsoft.Extensions.Options" version="2.2.0" />
+      </group>
     </dependencies>
   </metadata>
   <files>
