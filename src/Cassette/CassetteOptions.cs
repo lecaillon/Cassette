@@ -25,8 +25,9 @@ namespace Cassette
 
         /// <summary>
         ///     Gets or sets the prefix used in the name of a key in the cache.
+        ///     The default value of this property is: Cassette
         /// </summary>
-        public string KeyPrefix { get; set; }
+        public string KeyPrefix { get; set; } = "Cassette";
 
         /// <summary>
         ///     Gets or sets the separator used in the name of a key in the cache.
