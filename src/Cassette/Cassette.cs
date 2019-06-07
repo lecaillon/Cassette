@@ -91,7 +91,7 @@ namespace Cassette
                 var hash = sha1.ComputeHash(bytes);
                 return options.KeyPrefix is null ? "" : options.KeyPrefix + options.KeySeparator
                      + requestMethod + options.KeySeparator
-                     + requestUri.Replace("http://", "http//").Replace("https://", "http//") + options.KeySeparator
+                     + requestUri.Replace("http://", "http//").Replace("https://", "https//") + options.KeySeparator
                      + Convert.ToBase64String(hash);
             }
         }

@@ -17,8 +17,8 @@ namespace Cassette.Tests
                 // Register Cassette in the DI container
                 services.AddCassette(options =>
                 {
-                    options.KeyPrefix = "Cassette";
-                    options.CacheEntryOption.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(1);
+                    options.KeyPrefix = "Cassette:Tests";
+                    options.CacheEntryOption.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(1);
                 });
             });
         }
