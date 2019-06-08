@@ -11,10 +11,10 @@ namespace AspNetCore.HttpClientFactory.QuickStart
         [Get("/regions")]
         Task<List<Region>> GetRegions();
 
+        [Headers(CassetteOptions.Refit.ExcludeLastUriSegment)]
         [Get("/regions/{code}")]
         Task<Region> GetRegion(string code);
 
-        [Headers(CassetteOptions.Refit.ExcludeLastUriSegment)]
         [Get("/regions/{code}/departements")]
         Task<List<Departement>> GetDepartements(string code);
     }
