@@ -67,7 +67,7 @@ Task("report-coverage").Does(() =>
 {
     ReportGenerator($"{publishDir}/coverage.xml", $"{publishDir}/coverage", new ReportGeneratorSettings
     {
-        ReportTypes = new[] { ReportGeneratorReportType.HtmlInline_AzurePipelines_Dark },
+        ReportTypes = new[] { ReportGeneratorReportType.Cobertura, ReportGeneratorReportType.HtmlInline_AzurePipelines_Dark },
         Verbosity = ReportGeneratorVerbosity.Info
     });
 });
