@@ -53,7 +53,7 @@ services.AddCassette(options =>
 ```
 
 ### Configuration
-Cassette uses specific HTTP request headers to modify its behavior. They are define in the classes `CassetteOptions` and `CassetteOptions.Refit`:
+Cassette uses specific HTTP request headers to modify its behavior. They are defined in the classes `CassetteOptions` and `CassetteOptions.Refit`:
 - **NoRecord**: prevent caching of the HTTP response.
 - **ExcludeRequestBody**: exclude the request body from the computed key in cache when it contains an auto-generated identifier that would cause cache misses.
 - **ExcludeLastUriSegment**: exclude from the computed key in cache the last uri segment when its value is always different between calls, causing cache misses.
