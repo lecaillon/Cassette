@@ -1,3 +1,5 @@
+#tool nuget:?package=ReportGenerator&version=4.1.10
+
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,6 +55,20 @@ Task("test").Does(() =>
     {
         Configuration = configuration,
         ArgumentCustomization = args => args.Append(logger)
+                                            .Append("/p:AltCover=true")
+                                            .Append("/p:AltCoverForce=true")
+                                            .Append("/p:AltCoverCallContext=[Fact]|[Theory]")
+                                            .Append("/p:AltCoverAssemblyFilter=Cassette.Tests|AspNetCore.HttpClientFactory.QuickStart|xunit.runner")
+                                            .Append($"/p:AltCoverXmlReport={publishDirFullPath}/coverage.xml")
+    });
+});
+
+Task("report-coverage").Does(() =>
+{
+    ReportGenerator($"{publishDir}/coverage.xml", $"{publishDir}/coverage", new ReportGeneratorSettings
+    {
+        ReportTypes = new[] { ReportGeneratorReportType.Badges, ReportGeneratorReportType.Cobertura, ReportGeneratorReportType.HtmlInline_AzurePipelines_Dark },
+        Verbosity = ReportGeneratorVerbosity.Info
     });
 });
 
@@ -69,6 +85,7 @@ Task("default")
     .IsDependentOn("clean")
     .IsDependentOn("build")
     .IsDependentOn("test")
+    .IsDependentOn("report-coverage")
     .IsDependentOn("pack");
 
 RunTarget(target);
