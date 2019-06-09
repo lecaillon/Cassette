@@ -22,7 +22,7 @@ Install-Package Cassette.Http
 ```
 
 ### Requirement
-- **.NET Core 2+** or **.NET 4.6.1+**
+- **.NET Core 2.1+** or **.NET 4.6.1+**
 - Register an implementation of [`IDistributedCache`](https://docs.microsoft.com/en-us/aspnet/core/performance/caching/distributed) (Redis, SQL Server, in-memory).
 
 ### Usage
