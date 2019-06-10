@@ -1,4 +1,4 @@
-# Cassette [![Build Status](https://lecaillon.visualstudio.com/Cassette-CI/_apis/build/status/Cassette-CI?branchName=master)](https://lecaillon.visualstudio.com/Cassette-CI/_build/latest?definitionId=6&branchName=master) [![Coverage status](https://img.shields.io/azure-devops/coverage/lecaillon/cassette-ci/6.svg?color=brightgreen)](https://lecaillon.visualstudio.com/Cassette-CI/_build/latest?definitionId=6&branchName=master)
+# Cassette [![Build Status](https://lecaillon.visualstudio.com/Cassette-CI/_apis/build/status/Cassette-CI?branchName=master)](https://lecaillon.visualstudio.com/Cassette-CI/_build/latest?definitionId=6&branchName=master) [![Coverage status](https://img.shields.io/azure-devops/coverage/lecaillon/cassette-ci/6.svg?color=brightgreen)](https://lecaillon.visualstudio.com/Cassette-CI/_build/latest?definitionId=6&branchName=master) [![NuGet](https://buildstats.info/nuget/Cassette.Http)](https://www.nuget.org/packages/Cassette.Http)
 
 <img align="right" width="256px" height="256px" src="https://raw.githubusercontent.com/lecaillon/Cassette/master/images/logo256.png">
 
