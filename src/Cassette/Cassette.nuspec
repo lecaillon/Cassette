@@ -12,7 +12,7 @@
     <repository type="git" url="https://github.com/lecaillon/Cassette.git" />
     <iconUrl>https://raw.githubusercontent.com/lecaillon/Cassette/master/images/logo128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>- #23 Change to work with non-text HTTP requests and responses</releaseNotes>
     <tags>cassette cassette.http integration-tests continuous-integration httpclient middleware message-handler cache distributed-cache</tags>
     <dependencies>
       <group targetFramework="netstandard2.0">
