@@ -18,18 +18,19 @@ namespace Cassette
 
         public static async Task<Request> ToRequest(this HttpRequestMessage httpRequest)
         {
-            string requestBody = await httpRequest.Content.ToStringAsync();
             var request = new Request
             {
                 Method = httpRequest.Method.ToString(),
                 Uri = httpRequest.RequestUri.ToString(),
                 Version = httpRequest.Version,
                 Headers = httpRequest.Headers.ToDictionary(x => x.Key, v => v.Value),
-                Body = requestBody
             };
+
             if (httpRequest.Content != null)
             {
                 request.ContentHeaders = httpRequest.Content.Headers.ToDictionary(x => x.Key, v => v.Value);
+                await httpRequest.Content.LoadIntoBufferAsync();
+                request.Body = await httpRequest.Content.ReadAsByteArrayAsync();
             }
 
             return request;
@@ -37,17 +38,22 @@ namespace Cassette
 
         public static async Task<Response> ToResponse(this HttpResponseMessage httpResponse)
         {
-            string responseBody = await httpResponse.Content.ToStringAsync();
-
-            return new Response
+            var response = new Response
             {
                 Status = httpResponse.StatusCode,
                 ReasonPhrase = httpResponse.ReasonPhrase,
                 Version = httpResponse.Version,
                 Headers = httpResponse.Headers.ToDictionary(x => x.Key, v => v.Value),
-                ContentHeaders = httpResponse.Content.Headers.ToDictionary(x => x.Key, v => v.Value),
-                Body = responseBody
             };
+
+            if (httpResponse.Content != null)
+            {
+                response.ContentHeaders = httpResponse.Content.Headers.ToDictionary(x => x.Key, v => v.Value);
+                await httpResponse.Content.LoadIntoBufferAsync();
+                response.Body = await httpResponse.Content.ReadAsByteArrayAsync();
+            }
+
+            return response;
         }
 
         public static HttpResponseMessage Replay(this byte[] bytes) => bytes.ToCassette().Replay();
@@ -78,14 +84,14 @@ namespace Cassette
             return httpRequest;
         }
 
-        public static HttpContent ToHttpContent(this string body)
+        public static HttpContent ToHttpContent(this byte[] body)
         {
-            if (!string.IsNullOrEmpty(body))
+            if (body is null)
             {
-                return new ByteArrayContent(Encoding.UTF8.GetBytes(body));
+                return null;
             }
 
-            return null;
+            return new ByteArrayContent(body);
         }
 
         public static string GetUriWithoutLastSegment(this Request request)

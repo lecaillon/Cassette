@@ -83,16 +83,20 @@ namespace Cassette
 
             string requestMethod = request.Method;
             string requestUri = request.Headers.ContainsKey(CassetteOptions.ExcludeLastUriSegment) ? request.GetUriWithoutLastSegment() : request.Uri;
-            string requestBody = request.Headers.ContainsKey(CassetteOptions.ExcludeRequestBody) ? string.Empty : request.Body;
-            var bytes = Encoding.UTF8.GetBytes(requestMethod + requestUri + requestBody);
 
-            using (var sha1 = new SHA1Managed())
+            using (var hasher = IncrementalHash.CreateHash(HashAlgorithmName.SHA1))
             {
-                var hash = sha1.ComputeHash(bytes);
+                hasher.AppendData(Encoding.UTF8.GetBytes(requestMethod + requestUri));
+
+                if (request.Body != null && !request.Headers.ContainsKey(CassetteOptions.ExcludeRequestBody))
+                {
+                    hasher.AppendData(request.Body);
+                }
+
                 return options.KeyPrefix is null ? "" : options.KeyPrefix + options.KeySeparator
                      + requestMethod + options.KeySeparator
                      + requestUri.Replace("http://", "http//").Replace("https://", "https//") + options.KeySeparator
-                     + Convert.ToBase64String(hash);
+                     + Convert.ToBase64String(hasher.GetHashAndReset());
             }
         }
     }
@@ -104,7 +108,7 @@ namespace Cassette
         public string Uri { get; set; }
         public Dictionary<string, IEnumerable<string>> Headers { get; set; }
         public Dictionary<string, IEnumerable<string>> ContentHeaders { get; set; }
-        public string Body { get; set; }
+        public byte[] Body { get; set; }
         public Version Version { get; set; }
     }
 
@@ -115,7 +119,7 @@ namespace Cassette
         public string ReasonPhrase { get; set; }
         public Dictionary<string, IEnumerable<string>> Headers { get; set; }
         public Dictionary<string, IEnumerable<string>> ContentHeaders { get; set; }
-        public string Body { get; set; }
+        public byte[] Body { get; set; }
         public Version Version { get; set; }
     }
 }
