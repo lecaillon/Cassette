@@ -15,8 +15,14 @@ public static class CassetteConfigurationExtensions
     /// </summary>
     public static IServiceCollection AddCassette(this IServiceCollection services, Action<CassetteOptions> configureCassette)
     {
-        ArgumentNullException.ThrowIfNull(services);
-        ArgumentNullException.ThrowIfNull(configureCassette);
+        if (services is null)
+        {
+            throw new ArgumentNullException(nameof(services));
+        }
+        if (configureCassette is null)
+        {
+            throw new ArgumentNullException(nameof(configureCassette));
+        }
 
         services.AddLogging();
         services.AddOptions();

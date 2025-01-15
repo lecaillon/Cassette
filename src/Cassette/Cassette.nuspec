@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Cassette.Http</id>
-	<version>1.1.2</version>
+	<version>1.2.0</version>
     <authors>Philippe Lécaillon</authors>
     <owners>Philippe Lécaillon</owners>
     <summary>Records and replays successful HTTP responses in your testing environment.</summary>

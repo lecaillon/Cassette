@@ -21,18 +21,12 @@ internal class Cassette
         return JsonSerializer.SerializeToUtf8Bytes(this);
     }
 
-    public static async Task<Cassette> Record(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse)
+    public static async Task<Cassette> Record(HttpRequestMessage httpRequest, HttpResponseMessage httpResponse) => new Cassette
     {
-        ArgumentNullException.ThrowIfNull(httpRequest);
-        ArgumentNullException.ThrowIfNull(httpResponse);
-
-        return new Cassette
-        {
-            Request = await httpRequest.ToRequest(),
-            Response = await httpResponse.ToResponse(),
-            RecordedAt = DateTimeOffset.UtcNow
-        };
-    }
+        Request = await httpRequest.ToRequest(),
+        Response = await httpResponse.ToResponse(),
+        RecordedAt = DateTimeOffset.UtcNow
+    };
 
     public HttpResponseMessage Replay()
     {
