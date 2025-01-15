@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Cassette
@@ -102,21 +103,8 @@ namespace Cassette
 
         private static Cassette ToCassette(this byte[] bytes)
         {
-            using (var stream = new MemoryStream(bytes))
-            {
-                var formatter = new BinaryFormatter();
-                return (Cassette)formatter.Deserialize(stream);
-            }
-        }
-
-        private static async Task<string> ToStringAsync(this HttpContent content)
-        {
-            if (content is null)
-            {
-                return null;
-            }
-
-            return await content.ReadAsStringAsync();
+            using var stream = new MemoryStream(bytes);
+            return JsonSerializer.Deserialize<Cassette>(stream);
         }
     }
 }

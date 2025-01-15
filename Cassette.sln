@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28922.388
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cassette", "src\Cassette\Cassette.csproj", "{B46DF27A-9DEF-44F7-AB0F-1AF20F810EEE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cassette.Tests", "test\Cassette.Tests\Cassette.Tests.csproj", "{6471FBA4-D2E8-482B-8147-306D7545EA69}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{DB3B6B50-50BA-46C5-8283-A0F9CAB0E77F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.HttpClientFactory.QuickStart", "samples\AspNetCore.HttpClientFactory.QuickStart\AspNetCore.HttpClientFactory.QuickStart.csproj", "{215AAACA-830E-46E8-BF6B-59F6425A67AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +21,9 @@ Global
 		{6471FBA4-D2E8-482B-8147-306D7545EA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6471FBA4-D2E8-482B-8147-306D7545EA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6471FBA4-D2E8-482B-8147-306D7545EA69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{215AAACA-830E-46E8-BF6B-59F6425A67AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{215AAACA-830E-46E8-BF6B-59F6425A67AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{215AAACA-830E-46E8-BF6B-59F6425A67AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{215AAACA-830E-46E8-BF6B-59F6425A67AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{215AAACA-830E-46E8-BF6B-59F6425A67AF} = {DB3B6B50-50BA-46C5-8283-A0F9CAB0E77F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {074568C1-D794-4AF0-91E0-E5D733D2E92D}

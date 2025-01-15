@@ -12,20 +12,14 @@
     <repository type="git" url="https://github.com/lecaillon/Cassette.git" />
     <iconUrl>https://raw.githubusercontent.com/lecaillon/Cassette/master/images/logo128.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>- #23 Change to work with non-text HTTP requests and responses</releaseNotes>
+    <releaseNotes>- Fix .NET 8 compatibility</releaseNotes>
     <tags>cassette cassette.http integration-tests continuous-integration httpclient middleware message-handler cache distributed-cache</tags>
     <dependencies>
-      <group targetFramework="netstandard2.0">
-        <dependency id="Microsoft.Extensions.Caching.Abstractions" version="2.1.2" />
-        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.1.1" />
-        <dependency id="Microsoft.Extensions.Http" version="2.1.1" />
-        <dependency id="Microsoft.Extensions.Logging" version="2.1.1" />
-        <dependency id="Microsoft.Extensions.Options" version="2.1.1" />
-      </group>
+      <group targetFramework="net8.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\netstandard2.0\Cassette.dll" target="lib\netstandard2.0" />
-    <file src="bin\Release\netstandard2.0\Cassette.pdb" target="lib\netstandard2.0" />
+    <file src="bin\Release\net8.0\Cassette.dll" target="lib\net8.0" />
+    <file src="bin\Release\net8.0\Cassette.pdb" target="lib\net8.0" />
   </files>
 </package>
